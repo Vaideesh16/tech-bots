@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Analysis</title>
+</head>
+<body>
+    <h1>Check if your food is healthy</h1>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload and Analyze</button>
+    </form>
+
+    {% if toxic_ingredients %}
+        <h2>⚠️ Main Toxic Ingredients Found:</h2>
+        <ul>
+            {% for ingredient in toxic_ingredients %}
+                <li>{{ ingredient }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if healthy_ingredients %}
+        <h2>✅ Main Healthy Ingredients Found:</h2>
+        <ul>
+            {% for ingredient in healthy_ingredients %}
+                <li>{{ ingredient }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if warnings %}
+        <h2>⚠️ Warnings Based on Your Health and Weekly Summary:</h2>
+        <ul>
+            {% for warning in warnings %}
+                <li>{{ warning }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
